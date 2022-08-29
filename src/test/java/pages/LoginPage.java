@@ -1,18 +1,21 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 	
-	WebDriver driver;
 	
-	public static final By _txt_username = By.name("username");
-	public static final By _txt_password = By.name("password");
-	public static final By _btn_login = By.xpath("//button[@type='submit']");
+	@FindBy(name="username")
+	WebElement _txt_username;	
+	@FindBy(name="password")
+	WebElement _txt_password;	
+	@FindBy(xpath="//button[@type='submit']")
+	WebElement _btn_login;
 	
-	public LoginPage(WebDriver driver) {
-		this.driver = driver;
+	public LoginPage(WebDriver driver) {		
+		super(driver);
 	}
 	
 	public void attemptToLogin(String username, String password) {
@@ -22,15 +25,15 @@ public class LoginPage {
 	}
 	
 	private void enterUsername(String username) {		
-		driver.findElement(_txt_username).sendKeys(username);
+		_txt_username.sendKeys(username);
 	}
 	
 	private void enterPassword(String password) {		
-		driver.findElement(_txt_password).sendKeys(password);
+		_txt_password.sendKeys(password);
 	}
 	
 	private void clickLogin() {
-		driver.findElement(_btn_login).click();
+		_btn_login.click();
 	}
 	
 }
