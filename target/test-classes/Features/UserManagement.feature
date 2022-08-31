@@ -17,6 +17,18 @@ Feature: Title of your feature
     Then is navigated to the personal details page
 
     Examples: 
-      | name   | middle name | last name | username | password |
-      | Jorge  | Alejandro   | Cruz      | Admin    | admin123 |
-      | Ramiro | Jesus       | Gutierrez | Admin    | admin123 |
+      | name   | middle name | last name |
+      | Jorge  | Alejandro   | Cruz      |
+      | Ramiro | Jesus       | Gutierrez |
+      
+ # @SearchAndFindReport
+ # Scenario Outline: Find a report using the search bar on the report page from the Pim page
+ #   When the user clicks on the Report option
+ #   And Searches for a <report> 
+ #   And clicks on the search button
+ #   Then the actions will be displayed 3
+
+ #   Examples: 
+ #     | name   | middle name | last name |
+ #     | Jorge  | Alejandro   | Cruz      |
+ #     | Ramiro | Jesus       | Gutierrez |

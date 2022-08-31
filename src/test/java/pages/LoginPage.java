@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 	
@@ -25,16 +26,17 @@ public class LoginPage extends BasePage {
 	}
 	
 	private void enterUsername(String username) {		
-		_txt_username.sendKeys(username);
+		this.wait.until(ExpectedConditions.visibilityOf(_txt_username)).sendKeys(username);
 	}
 	
 	private void enterPassword(String password) {		
-		_txt_password.sendKeys(password);
+		this.wait.until(ExpectedConditions.visibilityOf(_txt_password)).sendKeys(password);
 	}
 	
 	private void clickLogin() {
-		_btn_login.click();
+		this.wait.until(ExpectedConditions.visibilityOf(_btn_login)).click();
 	}
+
 	
 }
 
