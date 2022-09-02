@@ -11,6 +11,7 @@ public class PimPage extends BasePage{
 	
 	public PimPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
 	}
 
 
@@ -30,27 +31,56 @@ public class PimPage extends BasePage{
 	WebElement _btn_save;
 	@FindBy(css="oxd-form-loader")
 	WebElement divObstructor;
+	@FindBy(xpath="(//div[@role='cell'])[2]")
+	WebElement _first_listedEmployee;	
+	@FindBy(xpath="//h6[normalize-space()='Personal Details']")
+	WebElement _txt_personalDetails;
+	@FindBy(css="input[placeholder*='Type for hints']")
+	WebElement _input_searchReport;
+	@FindBy(css="button[type*='submit']")
+	WebElement _btn_searchReport;
+	@FindBy(css="i[class*='oxd-icon bi-file-text-fill']")
+	WebElement _btn_thirdOption_report;
+	@FindBy(xpath="//h6[contains(.,'All Employee')]")
+	WebElement _title_reportHeader;
 	
-	
-	public void goToEmployeePage() {
-		this.wait.until(ExpectedConditions.elementToBeClickable(this._btn_add_employee));
-		_btn_add_employee.click();
+	public void goToAddEmployeePage() {
+		waitForElementToBeClickable(this._btn_add_employee).click();
 	}
 	public void goToReports() {
-		this.wait.until(ExpectedConditions.elementToBeClickable(this._btn_reports));
-		_btn_reports.click();		
+		waitForElementToBeClickable(this._btn_reports).click();	
 	}
 	public void userIsOnPimPageValidation(String expectedTitle) {
 		Assert.assertEquals(_title_header.getText(), expectedTitle);
 	}
-	public void addBasicEmployee(){
-		this.wait.until(ExpectedConditions.elementToBeClickable(this._txt_middlename)).sendKeys("firstname");
-		this.wait.until(ExpectedConditions.elementToBeClickable(this._txt_firstname)).sendKeys("middlename");
-		this.wait.until(ExpectedConditions.elementToBeClickable(this._txt_lastname)).sendKeys("lastname");
-		this.wait.until(ExpectedConditions.invisibilityOfAllElements(this.divObstructor));
-		this.wait.until(ExpectedConditions.visibilityOf(this._btn_save)).click();
-		
+	public void userIsOnReportInformationPage(String expectedReportInfoPage) {
+		Assert.assertEquals(_title_reportHeader.getText(), expectedReportInfoPage);
+	}
+	public void fillsTheForm(){
+		waitForElementToBeClickable(this._txt_firstname).sendKeys("firstname");
+		waitForElementToBeClickable(this._txt_middlename).sendKeys("middlename");
+		waitForElementToBeClickable(this._txt_lastname).sendKeys("lastname");
+	}
+	public void clicksSaveBtn() {
+		waitForElementToBeInvisible(this.divObstructor);
+		waitForElementToBeVisible(this._btn_save).click();
+	}
+	public void userIsOnPersonalDetailsValidation(String expectedTitle) {
+		Assert.assertEquals(_txt_personalDetails.getText(), expectedTitle);
+	}
+	public void clicksOnTheFirstEmployee() {
+		waitForElementToBeInvisible(this.divObstructor);
+		waitForElementToBeVisible(this._first_listedEmployee).click();
 		
 	}
+	public void searchForReport(String reportName) {
+		waitForElementToBeVisible(this._input_searchReport).sendKeys(reportName);
+	}
+	public void clickSearchBtn() {
+		waitForElementToBeClickable(this._btn_searchReport).click();
+	}
 	
+	public void clicksReportThirdOption() {
+		waitForElementToBeClickable(this._btn_thirdOption_report).click();
+	}
 }
