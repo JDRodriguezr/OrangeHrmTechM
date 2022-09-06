@@ -23,7 +23,6 @@ Feature: Finding specific employees with detailed information about them
 
   @Test @DirectorySearchByLocation
   Scenario Outline: The user goes to the Directory page and searches for employees by the location
-
     When clicks on the directory option in the sidebar
     And search for a specific <location>
     And clicks in the search button

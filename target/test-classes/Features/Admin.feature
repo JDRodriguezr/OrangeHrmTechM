@@ -8,7 +8,7 @@ Feature: Administrate registered employees
 
   @Test @AdminAddNationality
   Scenario Outline: The admin wants to add a new nationality to the list
-  	When clicks on the Admin option in the sidebar
+    When clicks on the Admin option in the sidebar
     And clicks on the nationality option
     And clicks on the Add button in the nationality page
     And types in the <nationality> in the textbox
@@ -19,16 +19,25 @@ Feature: Administrate registered employees
       | nationality |
       | Colombbian  |
 
-  #@Test @DirectorySearchByLocation
-  #Scenario Outline: The user goes to the Directory page and searches for employees by the location
-    #When clicks on the directory option in the sidebar
-    #And search for a specific <location>
-    #And clicks in the search button
-    #Then a list of employees with the specified <location> should be displayed
-#
-    #Examples: 
-      #| location              |
-      #| Canadian Regional HQ  |
-      #| HQ - CA, USA          |
-      #| New York Sales Office |
-      #| Texas R&D             |
+  @Test @EditBrandingPrimaryColor
+  Scenario: Change the corporate branding by changing characteristics in the branding page
+    When clicks on the Admin option in the sidebar
+    And clicks on the corporate branding option
+    And changes the primary color to the desired color
+    And clicks on the search publish button
+    Then will see that the page will update and the primary color will be the selected one
+
+  @Test @EditBrandingPrimaryColor
+  Scenario Outline: Change the corporate branding by changing characteristics in the branding page
+    When clicks on the Admin option in the sidebar
+    And clicks on the Job dropdown
+    And clicks on Job Titles
+    And clicks on the add button in the job title page
+    And enters a <job title>
+    And clicks in the job title save button
+    Then will see the created job on the list
+
+    Examples: 
+      | job title    |
+      | Abstract Job |
+      #| Architect  |

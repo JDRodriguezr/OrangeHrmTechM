@@ -44,7 +44,7 @@ public class BaseTest  {
 		}		
 		
 		else {
-			System.out.println("else intializeDriver other browser");
+			System.out.println("else intializeDriver different browser");
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
@@ -56,7 +56,6 @@ public class BaseTest  {
 		login = new LoginPage(driver);
 		login.goTo();
 	}
-	
 	
 	@AfterTest
 	public void tearDown() {
