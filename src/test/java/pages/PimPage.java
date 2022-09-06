@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 
 public class PimPage extends BasePage{
@@ -43,6 +44,19 @@ public class PimPage extends BasePage{
 	WebElement _btn_thirdOption_report;
 	@FindBy(xpath="//h6[contains(.,'All Employee')]")
 	WebElement _title_reportHeader;
+	@FindBy(css="span[class='oxd-topbar-body-nav-tab-item']")
+	WebElement _dropdown_configuration;
+	@FindBy(css="span[class*='oxd-switch-input']")
+	WebElement _slider_onOptionalFields;
+	@FindBy(css="button[type='submit']")
+	WebElement _btn_save_pimConfig;
+	@FindBy(css=".oxd-text.oxd-text--p.oxd-text--toast-title.oxd-toast-content-text")
+	WebElement _msg_optionalFields_success;
+	@FindBy(linkText="Optional Fields")
+	WebElement _option_pimCfgOptionalFields;
+
+	
+	
 	
 	public void goToAddEmployeePage() {
 		waitForElementToBeClickable(this._btn_add_employee).click();
@@ -61,26 +75,40 @@ public class PimPage extends BasePage{
 		waitForElementToBeClickable(this._txt_middlename).sendKeys("middlename");
 		waitForElementToBeClickable(this._txt_lastname).sendKeys("lastname");
 	}
-	public void clicksSaveBtn() {
+	public void clicksSaveBtn(){
 		waitForElementToBeInvisible(this.divObstructor);
 		waitForElementToBeVisible(this._btn_save).click();
 	}
 	public void userIsOnPersonalDetailsValidation(String expectedTitle) {
 		Assert.assertEquals(_txt_personalDetails.getText(), expectedTitle);
 	}
-	public void clicksOnTheFirstEmployee() {
+	public void clicksOnTheFirstEmployee(){
 		waitForElementToBeInvisible(this.divObstructor);
 		waitForElementToBeVisible(this._first_listedEmployee).click();
-		
 	}
 	public void searchForReport(String reportName) {
 		waitForElementToBeVisible(this._input_searchReport).sendKeys(reportName);
 	}
-	public void clickSearchBtn() {
+	public void clickSearchBtn(){
 		waitForElementToBeClickable(this._btn_searchReport).click();
-	}
-	
-	public void clicksReportThirdOption() {
+	}	
+	public void clicksReportThirdOption(){
 		waitForElementToBeClickable(this._btn_thirdOption_report).click();
 	}
+	public void selectsOptionalFields(){
+		waitForElementToBeVisible(this._dropdown_configuration).click();
+		waitForElementToBeVisible(_option_pimCfgOptionalFields);
+		waitForElementToBeClickable(_option_pimCfgOptionalFields).click();
+	}
+	public void clickOnSlider() {
+		waitForElementToBeInvisible(this.divObstructor);
+		waitForElementToBeClickable(this._slider_onOptionalFields).click();
+	}
+	public void clickOnSavePimConfig(){
+		waitForElementToBeClickable(this._btn_save_pimConfig).click();
+	}
+	public void successMsgValidation(){
+		Assert.assertTrue(waitForElementToBeVisible(this._msg_optionalFields_success).isDisplayed());
+	}
+	
 }

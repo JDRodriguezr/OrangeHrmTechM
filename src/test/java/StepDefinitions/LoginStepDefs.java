@@ -28,13 +28,13 @@ public class LoginStepDefs extends BaseTest {
 
 	@When("^attempts to Login with valid (.*) and (.*)$")
 	public void attempts_to_login_with_valid_username_and_password(String username, String password) {
-		login = new LoginPage(this.driver);
+		login = new LoginPage(driver);
 		login.attemptToLogin(username, password);						
 	}	
 
 	@Then("will see the PIM page")
 	public void will_see_the_pim_page() {
-		pimPage= new PimPage(this.driver);
+		pimPage= new PimPage(driver);
 		String expectedTitle = "PIM"; //This could be calling a constant in the basePage class, validations aswell.
 		pimPage.userIsOnPimPageValidation(expectedTitle);//Might be a better way to do this			
 		//pimPage.goToAddEmployeePage();

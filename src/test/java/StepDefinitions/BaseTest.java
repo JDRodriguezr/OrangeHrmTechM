@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import pages.LoginPage;
 import pages.PimPage;
+import pages.SidebarPage;
 
 public class BaseTest  {
 
@@ -22,6 +23,7 @@ public class BaseTest  {
 	public static WebDriver driver;
 	public static PimPage pimPage;
 	public static LoginPage login;
+	public static SidebarPage sidebPage;
 	
 	@BeforeTest
 	public WebDriver initializeDriver () throws IOException {
@@ -51,7 +53,7 @@ public class BaseTest  {
 		
 	public void launchApplication() throws IOException {
 		driver = initializeDriver();
-		login= new LoginPage(driver);
+		login = new LoginPage(driver);
 		login.goTo();
 	}
 	

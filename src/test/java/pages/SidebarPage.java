@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 public class SidebarPage extends BasePage {
 	
@@ -31,11 +32,13 @@ public class SidebarPage extends BasePage {
 	WebElement _mainMenu_buzz;
 	@FindBy(className="oxd-brand")
 	WebElement _mainMenu_ohrmLogo;
+	@FindBy(linkText="Configuration")
+	WebElement _configuration_dropdown;
+	
 	
 	public SidebarPage(WebDriver driver) {
 		super(driver);
-	}
-	
+	}	
 	public void goToAdminPage() {
 		this.wait.until(ExpectedConditions.elementToBeClickable(this._mainMenu_admin));
 		_mainMenu_admin.click();

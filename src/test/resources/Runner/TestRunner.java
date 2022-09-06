@@ -9,7 +9,7 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 @CucumberOptions(
 features="src\\test\\resources\\Features\\", 
-tags= {"@SuccessfulLogin"},
+tags= {"@ChangeConfigurationOptionalFields"},
 glue= {"StepDefinitions"}, 
 monochrome = true,
 plugin={"pretty", "html:target\\HtmlReports\\report.html"})
