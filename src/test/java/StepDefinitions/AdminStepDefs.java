@@ -76,9 +76,9 @@ public class AdminStepDefs extends BaseTest {
 	    admin.clickBtnAddJobTitle();
 	}
 
-	@And("^enters a (.*)$")
+	@And("^enters a job title (.*)$")
 	public void enters_a_abstract_job(String jobTitle) {
-	    admin.entersNewJobTitle(jobTitle);
+	    admin.entersJobTitle(jobTitle);
 	}
 
 	@Then("will see the created job on the list")
@@ -89,5 +89,56 @@ public class AdminStepDefs extends BaseTest {
 	public void clicks_in_the_job_title_save_button() {
 	    admin.clickSaveBtn();
 	}
+	@Then("will see the Already exists error message")
+	public void will_see_the_Already_exists_error_message() {
+	    admin.existingTitleErrorValidation();
+	}
+	
+	@And("^enters a existing (.*)$")
+	public void enters_a_existing_jobTitle(String existingJT) {
+	    admin.entersJobTitle(existingJT);
+	}
+	
+	@And("clicks on the delete button of any JobTitle")
+	public void clicks_on_the_delete_button_of_any_JobTitle() throws InterruptedException {
+	    admin.deleteJobTitle();
+	}
+	@And("clicks on the delete confirmation button")
+	public void clicks_on_the_delete_confirmation_button() {
+	    admin.clickDeleteConfirmation();
+	}
+	
+	@And("clicks on the add button in the pay grades page")
+	public void clicks_on_the_add_button_in_the_pay_grades_page() throws InterruptedException{
+		 admin.clickBtnAddPayGrade();
+	}
+	
+	@And("clicks on Pay Grades")
+	public void clicks_on_pay_grades() {
+	    admin.clickPayGrades();
+	}
 
+
+	@And("^enters a pay grade (.*)$")
+	public void enters_a_pay_grade_this_is_a_pay_grade_name(String payGrade) {
+	    admin.entersPayGradeName(payGrade);
+	}
+
+	@And("clicks in the pay grade save button")
+	public void clicks_in_the_pay_grade_save_button() {
+	    admin.clickSaveBtn();
+	}
+
+	@Then("will see the new added pay grade on the list")
+	public void will_see_the_new_added_pay_grade_on_the_list() {
+		admin.addNewPayGradeValidation();
+		admin.addNewPayGradeInfoRecordsNotfound();
+	}
+	@When("clicks on the delete button of any Pay Grade")
+	public void clicks_on_the_delete_button_of_any_pay_grade() throws InterruptedException {
+		admin.deleteJobTitle();
+	}
+
+	
+	
 }

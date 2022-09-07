@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class SidebarPage extends BasePage {
 	
@@ -34,7 +34,8 @@ public class SidebarPage extends BasePage {
 	WebElement _mainMenu_ohrmLogo;
 	@FindBy(linkText="Configuration")
 	WebElement _configuration_dropdown;
-	
+	String orangeHomeTitle = "OrangeHRM HR Software | Free & Open Source HR Software | HRMS | HRIS | OrangeHRM";
+		
 	
 	public SidebarPage(WebDriver driver) {
 		super(driver);
@@ -74,6 +75,9 @@ public class SidebarPage extends BasePage {
 	public void goToOrangeHomePage() {
 		this.wait.until(ExpectedConditions.elementToBeClickable(this._mainMenu_ohrmLogo));
 		_mainMenu_ohrmLogo.click();
+	}
+	public void orangeHomePageValidation() {
+		Assert.assertEquals(driver.getTitle(), orangeHomeTitle);
 	}
 
 }

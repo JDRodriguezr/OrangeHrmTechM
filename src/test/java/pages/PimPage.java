@@ -4,8 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+
 
 
 public class PimPage extends BasePage{
@@ -54,7 +53,8 @@ public class PimPage extends BasePage{
 	WebElement _msg_optionalFields_success;
 	@FindBy(linkText="Optional Fields")
 	WebElement _option_pimCfgOptionalFields;
-
+	@FindBy(xpath="(//button[@type='button'])[4]")
+	WebElement _thrash_icon;
 	
 	
 	
@@ -70,10 +70,10 @@ public class PimPage extends BasePage{
 	public void userIsOnReportInformationPage(String expectedReportInfoPage) {
 		Assert.assertEquals(_title_reportHeader.getText(), expectedReportInfoPage);
 	}
-	public void fillsTheForm(){
-		waitForElementToBeClickable(this._txt_firstname).sendKeys("firstname");
-		waitForElementToBeClickable(this._txt_middlename).sendKeys("middlename");
-		waitForElementToBeClickable(this._txt_lastname).sendKeys("lastname");
+	public void fillsTheForm(String name, String middleName, String lastName){
+		waitForElementToBeClickable(this._txt_firstname).sendKeys(name);
+		waitForElementToBeClickable(this._txt_middlename).sendKeys(middleName);
+		waitForElementToBeClickable(this._txt_lastname).sendKeys(lastName);
 	}
 	public void clicksSaveBtn(){
 		waitForElementToBeInvisible(this.divObstructor);
@@ -109,6 +109,10 @@ public class PimPage extends BasePage{
 	}
 	public void successMsgValidation(){
 		Assert.assertTrue(waitForElementToBeVisible(this._msg_optionalFields_success).isDisplayed());
+	}
+	public void deleteJobTitle() throws InterruptedException{
+		Thread.sleep(2000);
+		waitForElementToBeClickable(_thrash_icon).click();
 	}
 	
 }

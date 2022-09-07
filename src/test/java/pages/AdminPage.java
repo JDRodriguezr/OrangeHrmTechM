@@ -50,6 +50,20 @@ public class AdminPage extends BasePage{
 	WebElement _input_addJobTitle;
 	@FindBy(css="button[type='submit']")
 	WebElement _btn_save_newJobTitle;
+	@FindBy(xpath="//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']")
+	WebElement _errmsg_alreadyExists;
+	@FindBy(xpath="(//button[@type='button'])[3]")
+	WebElement _thrash_icon;
+	@FindBy(css="button[class*='oxd-button--medium oxd-button--label-danger']")
+	WebElement _btn_deleteConfirmation;	
+	@FindBy(xpath="//button[normalize-space()='Add']")
+	WebElement _btn_addPayGrades;
+	@FindBy(linkText="Pay Grades")
+	WebElement _txt_payGrades;
+	@FindBy(xpath="(//*[@class='oxd-input oxd-input--active'])[2]")
+	WebElement _input_payGradeName;
+	@FindBy(css=".oxd-text.oxd-text--p.oxd-text--toast-title.oxd-toast-content-text")
+	WebElement _msg_infoRecordsNotFound;
 	String jobTitle;
 	
 	public void goToAdminPage() {
@@ -102,13 +116,12 @@ public class AdminPage extends BasePage{
 	}
 	public void clickJobTitleOption() {
 		waitForElementToBeVisible(_txt_jobTitles).click();
-		
 	}
 	public void clickBtnAddJobTitle() throws InterruptedException{
 		Thread.sleep(2000);
 		waitForElementToBeClickable(_btn_addJobTitle).click();
 	}
-	public void entersNewJobTitle(String jobTitle) {
+	public void entersJobTitle(String jobTitle) {
 		waitForElementToBeVisible(_input_addJobTitle).sendKeys(jobTitle);
 		this.jobTitle = jobTitle;		
 	}
@@ -120,8 +133,34 @@ public class AdminPage extends BasePage{
 		waitForElementToBeInvisible(_formLoader);
 		waitForElementToBeClickable(_btn_save_newJobTitle).click();		
 	}
-	
-	
-	
-	
+	public void existingTitleErrorValidation() {
+		waitForElementToBeVisible(_errmsg_alreadyExists);
+	}
+	public void deleteJobTitle() throws InterruptedException{
+		Thread.sleep(2000);
+		waitForElementToBeClickable(_thrash_icon).click();
+	}
+		
+	public void clickDeleteConfirmation() {
+		waitForElementToBeClickable(_btn_deleteConfirmation).click();
+	}
+	public void clickPayGrades() {
+		waitForElementToBeVisible(_txt_payGrades).click();
+	}
+	public void clickBtnAddPayGrade() throws InterruptedException{
+		Thread.sleep(2000);
+		waitForElementToBeClickable(_btn_addPayGrades).click();
+	}
+	public void entersPayGradeName(String payGrade) {
+		waitForElementToBeVisible(_input_payGradeName).sendKeys(payGrade);
+	}
+	public void addNewPayGradeValidation() {
+		waitForElementToBeVisible(_msg_actionSuccess);
+	}
+	public void addNewPayGradeInfoRecordsNotfound() {
+		waitForElementToBeVisible(_msg_infoRecordsNotFound);
+	}
+	public void alreadyExistPayGradeValidation() {
+		waitForElementToBeVisible(_errmsg_alreadyExists);
+	}
 }

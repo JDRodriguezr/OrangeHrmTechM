@@ -20,7 +20,7 @@ public class UserManagementStepDefs extends BaseTest {
 	}	
 	@And("^fills the (.*), (.*) and (.*) spaces$")
 	public void fills_the_add_employee_form(String name, String middleName, String lastName) {
-		pimPage.fillsTheForm();					
+		pimPage.fillsTheForm(name, middleName, lastName);					
 	}		
 	@And("clicks on Save")
 	public void clicks_on_save() {
@@ -71,6 +71,10 @@ public class UserManagementStepDefs extends BaseTest {
 	@Then("the success message should appear for a few seconds")
 	public void the_success_message_should_appear_for_a_few_seconds() {
 		pimPage.successMsgValidation();		
+	}
+	@And("clicks on the delete button of any Employee")
+	public void clicks_on_the_delete_button_of_any_employee() throws InterruptedException{
+	    pimPage.deleteJobTitle();
 	}
 	
 }

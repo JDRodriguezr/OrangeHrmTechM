@@ -41,3 +41,9 @@ Feature: Title of your feature
     When selects the Optional Fields option under the configuration dropdown
     And changes any of the sliders and clicks save
     Then the success message should appear for a few seconds
+    
+  @Test @DeleteEmployee 
+  Scenario: Delete employee
+    And  clicks on the delete button of any Employee
+    And  clicks on the delete confirmation button
+    Then visualizes the succesful message

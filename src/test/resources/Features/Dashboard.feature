@@ -18,3 +18,5 @@ Feature: Tests on the Dashboard Page
     Examples: 
       | title          |
       | Launching Soon |
+      
+  
