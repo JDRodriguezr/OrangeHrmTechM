@@ -12,15 +12,14 @@ public class DirectoryPage extends BasePage {
 	WebDriver driver;
 		
 	@FindBy(css="div[class*='oxd-select-text']")
-	WebElement _dropdwn_jobTitle;
+	WebElement _dropdown_jobtitle;
 	@FindBy(xpath="//h6[contains(.,'Directory')]")
 	WebElement _title_header;
-	@FindBy(css="span[class*='oxd-switch-input']")
-	WebElement _slider_onOptionalFields;
 	@FindBy(css="button[type*='submit']")
-	WebElement _btn_searchEmployee;
-	@FindBy(xpath="(//*[@class='oxd-input-group oxd-input-field-bottom-space'])[3]/div[2]")
-	WebElement _dropdwn_location;
+	WebElement _btn_search_employee;
+	@FindBy(xpath="(//div[@class='oxd-select-text--after'])[2]")
+
+	WebElement _dropdown_location;
 	
 
 	
@@ -31,7 +30,7 @@ public class DirectoryPage extends BasePage {
 	
 	public void selectDesiredJobTitle(String jobTitle) {
 		String selectLocator = "//span[contains(.,'"+ jobTitle +"')]";
-		waitForElementToBeClickable(this._dropdwn_jobTitle).click();
+		waitForElementToBeClickable(this._dropdown_jobtitle).click();
 		WebElement desiredJobTitleOption = driver.findElement(By.xpath(selectLocator));
 		waitForElementToBeClickable(desiredJobTitleOption).click();
 	}
@@ -46,7 +45,7 @@ public class DirectoryPage extends BasePage {
 		sidebPage.goToDirectoryPage();
 	}
 	public void clickTheSearchEmployeeButn(){
-		_btn_searchEmployee.click();
+		_btn_search_employee.click();
 	}
 	
 	public void searchJobTitleResultValidation(String jobTitle) {
@@ -57,7 +56,7 @@ public class DirectoryPage extends BasePage {
 	
 	public void selectDesiredLocation(String location) {
 		String selectLocator = "//span[contains(.,'"+ location +"')]";
-		waitForElementToBeClickable(this._dropdwn_location).click();
+		waitForElementToBeClickable(this._dropdown_location).click();
 		WebElement desiredLocationOption = driver.findElement(By.xpath(selectLocator));
 		waitForElementToBeClickable(desiredLocationOption).click();
 	}

@@ -1,8 +1,6 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -18,12 +16,10 @@ public class LoginStepDefs extends BaseTest {
 	
 	
 	@Given("john is on the OrangeHRM login page")
-	public void john_is_on_the_OrangeHRM_login_page() {	
-		//public void launchApplication() this opens the driver and navigates to login page
+	public void john_is_on_the_OrangeHRM_login_page() {
 		try {
 			launchApplication();			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -79,7 +75,7 @@ public class LoginStepDefs extends BaseTest {
 	}
 
 	@And("^enters (.*), (.*)$")
-	public void enters_admin123_admin1234_admin1234(String currentPass, String newPass) throws InterruptedException{
+	public void enters_admin123_admin1234_admin1234(String currentPass, String newPass) {
 	    login.entersThePasswords(currentPass, newPass);
 	}
 	@Then("will see the success message")

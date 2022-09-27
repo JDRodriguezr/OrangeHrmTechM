@@ -1,4 +1,4 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -24,12 +24,12 @@ public class AdminStepDefs extends BaseTest {
 	}
 
 	@And("clicks on the Add button in the nationality page")
-	public void clicks_on_the_add_button_in_the_nationality_page() throws InterruptedException {
+	public void clicks_on_the_add_button_in_the_nationality_page()  {
 		admin.clickNationalitiesAddBtn();
 	}
 
 	@And("^types in the (.*) in the textbox$")
-	public void types_in_the_colombbian_in_the_textbox(String nationality) {
+	public void types_in_the_nationality_in_the_textbox(String nationality) {
 	    admin.inputNewNationality(nationality);
 	}
 
@@ -72,7 +72,7 @@ public class AdminStepDefs extends BaseTest {
 	}
 
 	@And("clicks on the add button in the job title page")
-	public void clicks_on_the_add_button_in_the_job_title_page() throws InterruptedException{
+	public void clicks_on_the_add_button_in_the_job_title_page() {
 	    admin.clickBtnAddJobTitle();
 	}
 
@@ -100,7 +100,7 @@ public class AdminStepDefs extends BaseTest {
 	}
 	
 	@And("clicks on the delete button of any JobTitle")
-	public void clicks_on_the_delete_button_of_any_JobTitle() throws InterruptedException {
+	public void clicks_on_the_delete_button_of_any_JobTitle()  {
 	    admin.deleteJobTitle();
 	}
 	@And("clicks on the delete confirmation button")
@@ -109,7 +109,7 @@ public class AdminStepDefs extends BaseTest {
 	}
 	
 	@And("clicks on the add button in the pay grades page")
-	public void clicks_on_the_add_button_in_the_pay_grades_page() throws InterruptedException{
+	public void clicks_on_the_add_button_in_the_pay_grades_page() {
 		 admin.clickBtnAddPayGrade();
 	}
 	
@@ -135,7 +135,7 @@ public class AdminStepDefs extends BaseTest {
 		admin.addNewPayGradeInfoRecordsNotfound();
 	}
 	@When("clicks on the delete button of any Pay Grade")
-	public void clicks_on_the_delete_button_of_any_pay_grade() throws InterruptedException {
+	public void clicks_on_the_delete_button_of_any_pay_grade()  {
 		admin.deleteJobTitle();
 	}
 

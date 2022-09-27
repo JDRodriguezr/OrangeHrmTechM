@@ -1,10 +1,9 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import pages.PimPage;
 import pages.SidebarPage;
 
 
@@ -73,7 +72,7 @@ public class UserManagementStepDefs extends BaseTest {
 		pimPage.successMsgValidation();		
 	}
 	@And("clicks on the delete button of any Employee")
-	public void clicks_on_the_delete_button_of_any_employee() throws InterruptedException{
+	public void clicks_on_the_delete_button_of_any_employee() {
 	    pimPage.deleteJobTitle();
 	}
 	

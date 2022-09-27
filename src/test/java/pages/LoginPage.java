@@ -9,8 +9,6 @@ import org.testng.Assert;
 
 public class LoginPage extends BasePage {
 	
-	WebDriver driver;
-	
 	@FindBy(name="username")
 	WebElement _txt_username;	
 	@FindBy(name="password")
@@ -18,31 +16,27 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement _btn_login;
 	@FindBy(css="span[class*='oxd-userdropdown-tab']")
-	WebElement _profile_pictureDropdown;
+	WebElement _profile_picture_dropdown;
 	@FindBy(linkText="Logout")
-	WebElement _logoutOption;
+	WebElement _logout_option;
 	@FindBy(xpath="//h5[contains(.,'Login')]")
-	WebElement _txt_h5LoginTitle;
+	WebElement _txt_h5_login_title;
 	@FindBy(linkText="Support")
-	WebElement _supportOption;
+	WebElement _support_option;
 	@FindBy(linkText="About")
-	WebElement _aboutOption;
+	WebElement _about_option;
 	@FindBy(linkText="Change Password")
-	WebElement _input_changePassword;
-	@FindBy(xpath="//p[normalize-space()='39']")
-	WebElement _txt_about_activeEmployees;
-	@FindBy(css="div[class*='oxd-sheet oxd-sheet--rounded']")
-	WebElement _about_popOutWindow;
+	WebElement _input_change_password;
 	@FindBy(xpath="//h6[normalize-space()='About']")
-	WebElement _about_popOutWindow_title;
+	WebElement _about_popout_window_title;
 	@FindBy(css="img[alt='help image']")
-	WebElement _img_customerSupport;
-	@FindBy(xpath="(//*[@class='oxd-input oxd-input--active'])[2]")
-	WebElement _input_currentPassword;
-	@FindBy(xpath="//div[@class='oxd-grid-item oxd-grid-item--gutters user-password-cell']//div[@class='oxd-input-group oxd-input-field-bottom-space']//div//input[@type='password']")
-	WebElement _input_newPassword;
-	@FindBy(xpath="//div[@class='oxd-form-row user-password-row']//div[@class='oxd-grid-2 orangehrm-full-width-grid']//div[@class='oxd-grid-item oxd-grid-item--gutters']//div[@class='oxd-input-group oxd-input-field-bottom-space']//div//input[@type='password']")
-	WebElement _input_confirmNewPassword;
+	WebElement _img_customer_support;
+	@FindBy(xpath="(//*[contains(@type, 'password')])[1]")
+	WebElement _input_current_password;
+	@FindBy(xpath="(//*[contains(@type, 'password')])[2]")
+	WebElement _input_new_password;
+	@FindBy(xpath="(//*[contains(@type, 'password')])[3]")
+	WebElement _input_confirm_new_password;
 	@FindBy(css=".oxd-text.oxd-text--p.oxd-text--toast-title.oxd-toast-content-text")
 	WebElement _msg_success;
 	@FindBy(css="button[type='submit']")
@@ -50,10 +44,8 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath="//button[normalize-space()='Cancel']")
 	WebElement _btn_cancel; 
 	@FindBy(css="i[class*='bi-exclamation-circle']")
-	WebElement _icon_invalidCredentials;
-		
-	public final String URL_LOGIN= "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
-	
+	WebElement _icon_invalid_credentials;
+
 	public LoginPage(WebDriver driver) {		
 		super(driver);
 		this.driver = driver;
@@ -72,40 +64,39 @@ public class LoginPage extends BasePage {
 	private void clickLogin() {
 		waitForElementToBeVisible(_btn_login).click();
 	}	
-	public void goTo() {
-		this.driver.get(URL_LOGIN);
+	public void goTo(String url) {
+		this.driver.get(url);
 	}
 	public void clickProfilePic() {
-		waitForElementToBeClickable(_profile_pictureDropdown).click();
+		waitForElementToBeClickable(_profile_picture_dropdown).click();
 	}
 	public void clickOnLogoutOption() {
-		waitForElementToBeClickable(_logoutOption).click();
+		waitForElementToBeClickable(_logout_option).click();
 	}
 	public void homePageValidation() {
-		waitForElementToBeVisible(_txt_h5LoginTitle);
-		Assert.assertEquals("Login", _txt_h5LoginTitle.getText());
+		waitForElementToBeVisible(_txt_h5_login_title);
+		Assert.assertEquals("Login", _txt_h5_login_title.getText());
 	}
 	public void clickOnAboutOption() {
-		waitForElementToBeClickable(_aboutOption).click();
+		waitForElementToBeClickable(_about_option).click();
 	}
 	public void clickOnSupportOption() {
-		waitForElementToBeClickable(_supportOption).click();
+		waitForElementToBeClickable(_support_option).click();
 	}
 	public void aboutPopupWindowValidation() {
-		waitForElementToBeVisible(_about_popOutWindow_title);
-		Assert.assertEquals("About", _about_popOutWindow_title.getText());
+		waitForElementToBeVisible(_about_popout_window_title);
+		Assert.assertEquals("About", _about_popout_window_title.getText());
 	}
 	public void userIsOnSupportPageValidation() {
-		waitForElementToBeVisible(_img_customerSupport);
+		waitForElementToBeVisible(_img_customer_support);
 	}
 	public void clicksOnChangePasswordOption() {
-		waitForElementToBeClickable(_input_changePassword).click();
+		waitForElementToBeClickable(_input_change_password).click();
 	}
-	public void entersThePasswords(String currentPass, String newPass) throws InterruptedException{
-		waitForElementToBeVisible(_input_currentPassword).sendKeys(currentPass);
-		waitForElementToBeVisible(_input_newPassword).sendKeys(newPass);
-		waitForElementToBeVisible(_input_confirmNewPassword).sendKeys(newPass);
-		Thread.sleep(1000); //sleep just to confirm pass change
+	public void entersThePasswords(String currentPass, String newPass) {
+		waitForElementToBeVisible(_input_current_password).sendKeys(currentPass);
+		waitForElementToBeVisible(_input_new_password).sendKeys(newPass);
+		waitForElementToBeVisible(_input_confirm_new_password).sendKeys(newPass);
 		waitForElementToBeClickable(_btn_save).click();
 	}
 	public void changePasswordSuccessMsgValidation() {
@@ -115,7 +106,7 @@ public class LoginPage extends BasePage {
 		waitForElementToBeVisible(_btn_cancel).click();
 	}
 	public void invalidCredentialsValidation() {
-		waitForElementToBeVisible(_icon_invalidCredentials);
+		waitForElementToBeVisible(_icon_invalid_credentials);
 	}
 	
 }

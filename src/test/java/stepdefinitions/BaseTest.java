@@ -1,4 +1,4 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -24,6 +24,7 @@ public class BaseTest  {
 	public static PimPage pimPage;
 	public static LoginPage login;
 	public static SidebarPage sidebPage;
+	protected String URL_LOGIN;
 	
 	@BeforeTest
 	public WebDriver initializeDriver () throws IOException {
@@ -31,7 +32,7 @@ public class BaseTest  {
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\GlobalData.properties");
 		prop.load(fis);
 		String browserName = prop.getProperty("BROWSER");
-		String URL_LOGIN = prop.getProperty("URL_LOGIN");
+		URL_LOGIN = prop.getProperty("URL_LOGIN");
 		browserName.toLowerCase();
 		
 		if(browserName.equalsIgnoreCase("chrome")) {
@@ -54,7 +55,7 @@ public class BaseTest  {
 	public void launchApplication() throws IOException {
 		driver = initializeDriver();
 		login = new LoginPage(driver);
-		login.goTo();
+		login.goTo(URL_LOGIN);
 	}
 	
 	@AfterTest
